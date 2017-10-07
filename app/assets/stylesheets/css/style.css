@@ -10,6 +10,15 @@
     line-height: 42px;
   }
   
+  .tags{
+    color: black !important;
+    border-radius: 3px !important;
+    padding: 2px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    background-color: gainsboro;
+  }
+  
   header {
       height: 90px;
       background-color: #fff;
@@ -3892,7 +3901,9 @@
       font-size: 14px;
   }
   .pagination ul li a {
-      width: 42px;
+      width: 48px !important;
+      color: white !important;
+      background-color: #26ae61 !important;
   }
   .pagination ul li.blank {
       color: #a0a0a0;

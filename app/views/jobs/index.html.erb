@@ -1,0 +1,43 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+  <div class="container">
+    <div class="ten columns">
+      <h2>We found these jobs matching for you</h2>
+    </div>
+  </div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+  <!-- Recent Jobs -->
+  <div class="eleven columns">
+  <div class="padding-right">
+    
+    <form action="#" method="get" class="list-search">
+      <button><i class="fa fa-search"></i></button>
+      <input type="text" placeholder="job title, keywords or company name" value=""/>
+      <div class="clearfix"></div>
+    </form>
+    
+    <div class="job-icons" style="margin-left: 2%; margin-top: -2%; margin-bottom: 2%;"> 
+      <span style="margin-right: 4%;"><i class="fa fa-clock-o"></i> Start Time </span>
+      <span><i class="fa fa-times"></i> End Time </span> 
+    </div>
+    
+    <ul class="job-list full">
+      <%= render @jobs %>
+    </ul>
+    <div class="clearfix"></div>
+
+    <div class="pagination-container">
+      <nav class="pagination">
+        <%= paginate @jobs, outer_window: 3, theme: 'twitter-bootstrap-3' %>
+      </nav>
+    </div>
+
+  </div>
+  </div>
+</div>
