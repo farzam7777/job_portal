@@ -1,2 +1,112 @@
-<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+  <div class="container">
+    <div class="ten columns">
+      <h2> <%= @job.title %> <span class="full-time"><%= @job.job_type %></span> </h2>
+    </div>
+  </div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+  
+  <!-- Recent Jobs -->
+  <div class="eleven columns">
+    <div class="padding-right">
+      
+      <!-- Company Info -->
+      <div class="company-info">
+        <div class="content">
+          <h4><%= @job.title %></h4>
+          <p style="margin-bottom: -2%;"> 
+            <span class="tags" style="padding: 10px"> Tags: </span>
+            <% @job.tag_list.each do |tag| %>
+              <span> <strong> <%= tag %> </strong> </span>
+            <% end %>
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <p class="margin-reset"> <%= @job.description %> </p>
+    </div>
+  </div>
+
+
+  <!-- Widgets -->
+  <div class="five columns">
+
+    <!-- Sort by -->
+    <div class="widget">
+      <h4>Overview</h4>
+
+      <div class="job-overview">
+        
+        <ul>
+          <li>
+            <i class="fa fa-map-marker"></i>
+            <div>
+              <strong>Location:</strong>
+              <span><%= @job.location %></span>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-clock-o"></i>
+            <div>
+              <strong>Start Date</strong>
+              <span><%= @job.start_date %></span>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-times"></i>
+            <div>
+              <strong>End Date:</strong>
+              <span><%= @job.end_date %></span>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-clock-o"></i>
+            <div>
+              <strong>Start Time</strong>
+              <span><%= @job.start_time.strftime("%H:%M") %></span>
+            </div>
+          </li>
+          <% if @job.job_type == 'Fixed' %>
+            <li>
+              <i class="fa fa-money"></i>
+              <div>
+                <strong>Rate:</strong>
+                <span>$<%= @job.payment %></span>
+              </div>
+            </li>
+          <% else %>
+            <li>
+              <i class="fa fa-money"></i>
+              <div>
+                <strong>Rate:</strong>
+                <span>$<%= @job.payment %> / hour</span>
+              </div>
+            </li>
+          <% end %>
+          <li>
+            <i class="fa fa-calendar"></i>
+            <div>
+              <strong>Day</strong>
+              <span><%= @job.day %></span>
+            </div>
+          </li>
+        </ul>
+
+
+        <a href="#" class="button">Apply For This Job</a>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Widgets / End -->
+
+
+</div>
