@@ -39,4 +39,6 @@ Rails.application.config.assets.precompile += %w( jquery-2.1.3.min.js )
 Rails.application.config.assets.precompile += %w( stacktable.js )
 Rails.application.config.assets.precompile += %w( switcher.js )
 Rails.application.config.assets.precompile += %w( waypoints.min.js )
+Rails.application.config.assets.precompile += %w( active_admin.js )
+Rails.application.config.assets.precompile += %w( active_admin.css.scss )
 
