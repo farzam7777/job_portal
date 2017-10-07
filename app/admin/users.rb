@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :approved#, :tag_list
+  permit_params :email, :password, :password_confirmation, :approved, :tag_list
 
   action_item :Approve, only: :show do 
     link_to "Approve", Approve_admin_user_path(user), method: :put if !user.approved?
@@ -24,7 +24,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs 'Account' do
       f.input :email
-   #   f.input :tag_list, placeholder: 'Tags (Separated By Commas)'
+      f.input :tag_list, placeholder: 'Tags (Separated By Commas)', input_html: { value: user.tag_list.join(", ") }
       f.input :approved
     end
     if f.object.id.nil?
@@ -41,7 +41,7 @@ ActiveAdmin.register User do
     column :email
     column :encrypted_password
     column :approved
-    #column :tag_list
+    column :tag_list
     actions
   end
   
@@ -50,7 +50,7 @@ ActiveAdmin.register User do
       row :email
       row :password
       row :approved
-      #row :tag_list
+      row :tag_list
     end
     active_admin_comments
   end
