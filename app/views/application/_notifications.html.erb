@@ -1,8 +1,8 @@
-<div id="messages" class="">
+<div id="messages" style="margin-bottom: -1%;">
  <% flash.each_with_index do |(k,v),i| %>
    <% next if k.to_s == 'timedout' %>
    <div id="message-<%= i %>" class="actual-message">
-     <div class="alert <%= bootstrap_class_for(k.to_s.sub('_stay', '')) %>">
+     <div class="<%= bootstrap_class_for(k.to_s.sub('_stay', '')) %>">
        <% if v.is_a?(Array) %>
          <ul style="color: black !important">
            <% v.each do |vv| %>
@@ -10,7 +10,7 @@
            <% end %>
          </ul>
        <% else %>
-         <p style="color: black !important"> <%= raw v %> </p>
+         <p style="color: black !important; margin-left: 2% !important;"> <%= raw v %> </p>
        <% end %>
      </div>
    </div>
@@ -24,5 +24,5 @@
    {
      $(this).remove();
    });
- }, 6000);
+ }, 2000);
 </script>

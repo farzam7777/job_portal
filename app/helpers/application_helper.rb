@@ -2,15 +2,15 @@ module ApplicationHelper
   def bootstrap_class_for(flash_type)
     case flash_type.to_sym
       when :success
-        "alert-success"
+        "notification success closeable"
       when :error
-        "alert-danger"
+        "notification error closeable"
       when :alert
-        "alert-danger"
+        "notification error closeable"
       when :notice
-        "alert-success"
+        "notification success closeable"
       when :warning
-        "alert-warning"
+        "notification warning closeable"
       else
         flash_type.to_s
     end
