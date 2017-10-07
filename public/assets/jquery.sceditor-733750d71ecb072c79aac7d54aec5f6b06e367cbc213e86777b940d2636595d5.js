@@ -1,0 +1,1 @@
+!function(t){t(document).ready(function(){t(".WYSIWYG").sceditor({plugins:"bbcode",toolbar:"bold,italic,underline,center,right,justify,font,size,color,removeformat,bulletlist,orderedlist,table,quote,image,link,ltr,rtl,source",width:"100%"})})}(this.jQuery);
