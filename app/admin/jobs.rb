@@ -35,6 +35,23 @@ ActiveAdmin.register Job do
     f.actions
   end
   
+  show do
+    attributes_table do
+      row :title
+      row :description
+      row :tag_list
+      row :job_type
+      row :day
+      row :location
+      row :payment
+      row :start_date
+      row :end_date
+      row :start_time
+      row :status
+    end
+    active_admin_comments
+  end
+  
   filter :title
   filter :description
   filter :base_tags

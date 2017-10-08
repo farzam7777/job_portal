@@ -23,6 +23,7 @@ gem 'bootstrap-kaminari-views'
 gem "font-awesome-rails"
 gem 'active_skin'
 gem 'active_admin_theme'
+gem "cancan"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

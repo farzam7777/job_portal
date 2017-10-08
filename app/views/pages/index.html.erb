@@ -33,61 +33,64 @@
 
 <div class="container">
   
-  <!-- Recent Jobs -->
-  <div class="eleven columns">
-  <div class="padding-right">
-    <h3 class="margin-bottom-25">Recent Jobs</h3>
-    <ul class="job-list">
-      <% @jobs.each do |job| %>
-        <%= render 'jobs/job', job: job %>
-      <% end %>
-    </ul>
+  <% if user_signed_in? %>
+    <!-- Recent Jobs -->
+    <div class="eleven columns">
+      <div class="padding-right">
+        <h3 class="margin-bottom-25">Recent Jobs</h3>
+        <ul class="job-list">
+          <% @jobs.each do |job| %>
+            <%= render 'jobs/job', job: job %>
+          <% end %>
+        </ul>
 
-    <a href="<%= jobs_path %>" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
-    <div class="margin-bottom-55"></div>
-  </div>
-  </div>
-
-  <!-- Job Spotlight -->
-  <div class="five columns">
-    <h3 class="margin-bottom-5">Job Spotlight</h3>
-
-    <!-- Navigation -->
-    <div class="showbiz-navigation">
-      <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
-      <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
-    </div>
-    <div class="clearfix"></div>
-    
-    <!-- Showbiz Container -->
-    <div id="job-spotlight" class="showbiz-container">
-      <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
-        <div class="overflowholder">
-
-          <ul>
-            <% @jobs.each do |job| %>
-              <li>
-                <div class="job-spotlight">
-                  <a href="<%= job_path %>"><h4><%= job.title %> <span class="part-time"><%= job.job_type %></span></h4></a>
-                  <span><i class="fa fa-clock-o"></i> <%= job.start_date %> </span>
-                  <span><i class="fa fa-times"></i> <%= job.end_date %> </span>
-                  <% if job.job_type == 'Fixed' %>
-                    <span><i class="fa fa-money"></i> $<%= job.payment %> </span>
-                  <% else %>
-                    <span><i class="fa fa-money"></i> $<%= job.payment %> / hour</span>
-                  <% end %>
-                  <p><%= truncate(job.description, length: 50) %></p>
-                  <a href="#" class="button">Apply For This Job</a>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-          <div class="clearfix"></div>
-
-        </div>
-        <div class="clearfix"></div>
+        <a href="<%= jobs_path %>" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>
+        <div class="margin-bottom-55"></div>
       </div>
     </div>
 
-  </div>
+    <!-- Job Spotlight -->
+    <div class="five columns">
+      <h3 class="margin-bottom-5">Job Spotlight</h3>
+
+      <!-- Navigation -->
+      <div class="showbiz-navigation">
+        <div id="showbiz_left_1" class="sb-navigation-left"><i class="fa fa-angle-left"></i></div>
+        <div id="showbiz_right_1" class="sb-navigation-right"><i class="fa fa-angle-right"></i></div>
+      </div>
+      <div class="clearfix"></div>
+      
+      <!-- Showbiz Container -->
+      <div id="job-spotlight" class="showbiz-container">
+        <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1" >
+          <div class="overflowholder">
+
+            <ul>
+              <% @jobs.each do |job| %>
+                <li>
+                  <div class="job-spotlight">
+                    <a href="<%= job_path %>"><h4><%= job.title %> <span class="part-time"><%= job.job_type %></span></h4></a>
+                    <span><i class="fa fa-clock-o"></i> <%= job.start_date %> </span>
+                    <span><i class="fa fa-times"></i> <%= job.end_date %> </span>
+                    <% if job.job_type == 'Fixed' %>
+                      <span><i class="fa fa-money"></i> $<%= job.payment %> </span>
+                    <% else %>
+                      <span><i class="fa fa-money"></i> $<%= job.payment %> / hour</span>
+                    <% end %>
+                    <p><%= truncate(job.description, length: 50) %></p>
+                    <a href="#" class="button">Apply For This Job</a>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+            <div class="clearfix"></div>
+
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <h2> <%= link_to 'Login', new_user_session_path %> to view recent jobs. </h2>
+  <% end %>
 </div>
