@@ -48,36 +48,36 @@
           <li>
             <i class="fa fa-map-marker"></i>
             <div>
-              <strong>Location:</strong>
+              <strong>Job Location:</strong>
               <span><%= @job.location %></span>
             </div>
           </li>
           <li>
             <i class="fa fa-clock-o"></i>
             <div>
-              <strong>Start Date</strong>
-              <span><%= @job.start_date %></span>
+              <strong>Job Date</strong>
+              <span><%= @job.start_date.strftime("%m-%d-%Y") %></span>
             </div>
           </li>
           <li>
             <i class="fa fa-times"></i>
             <div>
-              <strong>End Date:</strong>
-              <span><%= @job.end_date %></span>
+              <strong>Job End Date:</strong>
+              <span><%= @job.end_date.strftime("%m-%d-%Y") %></span>
             </div>
           </li>
           <li>
             <i class="fa fa-clock-o"></i>
             <div>
-              <strong>Start Time</strong>
-              <span><%= @job.start_time.strftime("%H:%M") %></span>
+              <strong>Job Start Time</strong>
+              <span><%= @job.start_time.strftime("%I:%M %p") %></span>
             </div>
           </li>
           <% if @job.job_type == 'Fixed' %>
             <li>
               <i class="fa fa-money"></i>
               <div>
-                <strong>Rate:</strong>
+                <strong>Pay - Fixed / HR:</strong>
                 <span>$<%= @job.payment %></span>
               </div>
             </li>
@@ -85,7 +85,7 @@
             <li>
               <i class="fa fa-money"></i>
               <div>
-                <strong>Rate:</strong>
+                <strong>Pay - Fixed / HR:</strong>
                 <span>$<%= @job.payment %> / hour</span>
               </div>
             </li>
@@ -93,7 +93,7 @@
           <li>
             <i class="fa fa-calendar"></i>
             <div>
-              <strong>Day</strong>
+              <strong>Job Day</strong>
               <span><%= @job.day %></span>
             </div>
           </li>
