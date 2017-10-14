@@ -1,0 +1,22 @@
+<% jobs.each do |my_job| %>
+	<tr>
+		<td class="title"><a href="<%= job_path(my_job.job) %>"> <%= my_job.job.title %> </a></td>
+		<% if my_job.job.job_type == 'Fixed' %>
+			<td> Fixed  </td>
+		<% else %>
+			<td class="col-padding"> Hourly $ <%= my_job.job.payment %> / HR  </td>
+		<% end %>
+		<% if my_job.job.job_type == 'Fixed' %>
+			<td class="col-padding"> Fixed  </td>
+		<% else %>
+			<td class="col-padding"> 6.25 </td>
+		<% end %>
+		<td class="col-padding"> <span class="full-time status-box"><%= my_job.job_status %></span> </td>
+		<td class="col-padding"> <span class="part-time status-box"><%= my_job.payment_status %></span> </td>
+		<td class="col-padding"> 6.25 </td>
+		<td class="col-padding"> Not Available </td>
+		<td class="action">
+			<a href="#"><i class="fa  fa-eye-slash"></i> View</a>
+		</td>
+	</tr>
+<% end %>

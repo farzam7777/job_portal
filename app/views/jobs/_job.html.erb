@@ -1,4 +1,4 @@
-<% if !job.AssignedJobs.present? %>
+<% if !job.AssignedJob.present? %>
   <li><a href="<%= job_path(job) %>">
     <div class="job-list-content" style="margin-left: 14px;">
       <% if job.job_type == 'Fixed' %>

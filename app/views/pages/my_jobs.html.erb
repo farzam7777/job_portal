@@ -1,0 +1,53 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="single">
+	<div class="container">
+
+		<div class="sixteen columns">
+			<h2>Manage Jobs</h2>
+			<nav id="breadcrumbs">
+				<ul>
+					<li>You are here:</li>
+					<li><a href="#">Home</a></li>
+					<li>My Jobs</li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container">
+	
+	<!-- Table -->
+	<div class="sixteen columns">
+
+		<p class="margin-bottom-25"> <strong> Work Histroy </strong> </p>
+
+		<table class="manage-table resumes responsive-table">
+
+			<tr>
+				<th> Job Title</th>
+				<th> Pay</th>
+				<th> Hours Worked</th>
+				<th> Job Status</th>
+				<th> Payment Status</th>
+				<th> Net Pay</th>
+				<th> Pay Document </th>
+				<th></th>
+			</tr>
+
+			<!-- Item #1 -->
+			<%= render 'my_job', jobs: @jobs %>
+
+		</table>
+
+		<br>
+
+		<a href="<%= jobs_path %>" class="button">All Jobs</a>
+
+	</div>
+
+</div>

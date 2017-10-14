@@ -32,6 +32,13 @@
       </div>
       <p class="margin-reset"> <%= @job.description %> </p>
     </div>
+    <% if current_user.AssignedJobs.map(&:job_status).include? 'Pending' %>
+      <div style="margin-top: 4%;">
+        <div class="content">
+          <p> <span style="color: red"> Note: </span> <strong> Complete your current job to get a new one. </strong> </p>
+        </div>
+      </div>
+    <% end %>
   </div>
 
 
@@ -98,10 +105,12 @@
             </div>
           </li>
         </ul>
-        <% if @job.RequestedJobs.map(&:user).include? current_user %>
-          <a href="#" class="button request_applied"> Applied, Request Pending </a>
-        <% else %>
-          <%= link_to 'Apply For This Job', request_job_job_path(@job), method: :post, class: 'button' %>
+        <% if !current_user.AssignedJobs.map(&:job_status).include? 'Pending' %>
+          <% if @job.RequestedJobs.map(&:user).include? current_user %>
+            <a href="#" class="button request_applied"> Applied, Request Pending </a>
+          <% else %>
+            <%= link_to 'Apply For This Job', request_job_job_path(@job), method: :post, class: 'button' %>
+          <% end %>
         <% end %>
       </div>
 

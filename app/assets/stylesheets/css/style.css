@@ -24,6 +24,16 @@
     color: black !important;
     pointer-events: none;
   }
+
+  .status-box{
+    color: white !important;
+    padding: 8px !important;
+    border-radius: 3px !important;
+  }
+
+  .col-padding{
+    padding-left: 41px !important;
+  }
   
   header {
       height: 90px;
@@ -903,7 +913,7 @@
   }
   table.manage-table.resumes td:first-child,
   table.manage-table td:first-child {
-      padding-left: 35px;
+      padding-left: 53px;
       line-height: 25px;
   }
   table.manage-table tr td {

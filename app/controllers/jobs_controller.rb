@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   def index
-    @jobs = Job.includes(:AssignedJobs).all.page(params[:page]).per(5)
+    @jobs = Job.includes(:AssignedJob, :RequestedJobs).all.page(params[:page]).per(5)
     authorize! :index, Job
   end
 

@@ -17,6 +17,10 @@
 
           <li><a href="<%= jobs_path %>">Jobs</a></li>
 
+          <% if user_signed_in? %>
+            <li><a href="<%= page_path('my_jobs') %>">My Jobs</a></li>
+          <% end %>
+
           <!-- <li><a href="#">For Candidates</a>
             <ul>
               <li><a href="browse-jobs.html">Browse Jobs</a></li>
