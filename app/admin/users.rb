@@ -55,6 +55,6 @@ ActiveAdmin.register User do
     active_admin_comments
   end
   
-  filter :email
+  filter :email, as: :select, collection: proc { User.all.map(&:email) }
   filter :approved
 end

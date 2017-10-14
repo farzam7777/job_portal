@@ -19,6 +19,12 @@
     background-color: gainsboro;
   }
   
+  .request_applied{
+    background-color: #d3d3d3 !important;
+    color: black !important;
+    pointer-events: none;
+  }
+  
   header {
       height: 90px;
       background-color: #fff;

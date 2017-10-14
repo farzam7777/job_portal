@@ -98,9 +98,11 @@
             </div>
           </li>
         </ul>
-
-
-        <a href="#" class="button">Apply For This Job</a>
+        <% if @job.RequestedJobs.map(&:user).include? current_user %>
+          <a href="#" class="button request_applied"> Applied, Request Pending </a>
+        <% else %>
+          <%= link_to 'Apply For This Job', request_job_job_path(@job), method: :post, class: 'button' %>
+        <% end %>
       </div>
 
     </div>

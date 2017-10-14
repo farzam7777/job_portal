@@ -1,0 +1,2 @@
+class JobsRequested < ApplicationRecord
+end

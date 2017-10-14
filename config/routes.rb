@@ -5,5 +5,10 @@ Rails.application.routes.draw do
   HighVoltage.configure do |config|
     config.home_page = 'index'
   end
-  resources :jobs
+  
+  resources :jobs do
+    member do
+      post 'request_job'
+    end
+  end
 end

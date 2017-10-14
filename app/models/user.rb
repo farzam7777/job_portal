@@ -6,6 +6,9 @@ class User < ApplicationRecord
   
   acts_as_taggable
   
+  has_many :RequestedJobs
+  has_many :AssignedJobs 
+  
   def active_for_authentication? 
     super && approved? 
   end 
@@ -26,5 +29,9 @@ class User < ApplicationRecord
       recoverable.send_reset_password_instructions
     end
     recoverable
+  end
+  
+  def to_s
+    email
   end
 end
