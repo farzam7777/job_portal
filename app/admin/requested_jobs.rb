@@ -1,5 +1,7 @@
 ActiveAdmin.register RequestedJob do
   permit_params :user_id, :job_id, :status
+
+  scope :admin_report_request_pending_jobs
   
   action_item :Approve, only: :show do 
     link_to "Approve", Approve_admin_requested_job_path(requested_job), method: :put if requested_job.status == 'Not Reviewed'

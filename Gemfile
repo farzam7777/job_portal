@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'high_voltage', '~> 3.0.0'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
-gem 'acts-as-taggable-on', '~> 4.0'
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem "font-awesome-rails"
@@ -25,6 +25,7 @@ gem 'active_skin'
 gem 'active_admin_theme'
 gem "cancan"
 gem "paperclip", "~> 5.0.0"
+gem 'time_difference'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

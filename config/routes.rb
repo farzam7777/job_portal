@@ -12,5 +12,11 @@ Rails.application.routes.draw do
     member do
       post 'request_job'
     end
+    member do
+      get 'clock_in'
+    end
+    member do
+      get 'clock_out'
+    end
   end
 end

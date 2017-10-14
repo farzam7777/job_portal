@@ -2,10 +2,14 @@ ActiveAdmin.register Job do
   permit_params :title, :description, :job_type, :day, :location, 
   :payment, :start_date, :end_date, :start_time, :status, :tag_list
 
+  scope :admin_report_jobs_expired
+
   index do
     selectable_column
     column 'Job Title', :title
-    column 'Job Description', :description
+    column "Job Description" do |job|
+      truncate(job.description, omision: "...", length: 30)
+    end
     column 'Job Tags List', :tag_list
     column 'Pay - Fixed / HR', :job_type
     column 'Job Day', :day

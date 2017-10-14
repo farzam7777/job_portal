@@ -2,7 +2,7 @@
 	<tr>
 		<td class="title"><a href="<%= job_path(my_job.job) %>"> <%= my_job.job.title %> </a></td>
 		<% if my_job.job.job_type == 'Fixed' %>
-			<td> Fixed  </td>
+			<td class="col-padding"> Fixed  </td>
 		<% else %>
 			<td class="col-padding"> Hourly $ <%= my_job.job.payment %> / HR  </td>
 		<% end %>
@@ -14,9 +14,19 @@
 		<td class="col-padding"> <span class="full-time status-box"><%= my_job.job_status %></span> </td>
 		<td class="col-padding"> <span class="part-time status-box"><%= my_job.payment_status %></span> </td>
 		<td class="col-padding"> 6.25 </td>
-		<td class="col-padding"> Not Available </td>
+		<% if my_job.pay_slip.exists? %>
+			<td class="col-padding"> <%= link_to my_job.pay_slip_file_name, my_job.pay_slip.url, target: :_blank %> </td>
+		<% else %>
+			<td class="col-padding"> Not yet available </td>
+		<% end %>
 		<td class="action">
-			<a href="#"><i class="fa  fa-eye-slash"></i> View</a>
+			<% if my_job.job_status == "Pending" %>
+				<a href="<%= clock_in_job_path(my_job) %>"><i class="fa fa-clock-o"></i> ClockIn</a>
+			<% end %>
+			<a href="#"><i class="fa fa-eye-slash"></i> View</a>
+			<% if my_job.job_status == "Pending" %>	
+				<a href="<%= clock_out_job_path(my_job) %>"><i class="fa fa-hourglass"></i> ClockOut</a>
+			<% end %>
 		</td>
 	</tr>
 <% end %>

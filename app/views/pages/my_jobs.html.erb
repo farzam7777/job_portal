@@ -21,33 +21,37 @@
 ================================================== -->
 <div class="container">
 	
-	<!-- Table -->
-	<div class="sixteen columns">
+	<% if @jobs.present? %>
+		<!-- Table -->
+		<div class="sixteen columns">
 
-		<p class="margin-bottom-25"> <strong> Work Histroy </strong> </p>
+			<p class="margin-bottom-25"> <strong> Work Histroy </strong> </p>
 
-		<table class="manage-table resumes responsive-table">
+			<table class="manage-table resumes responsive-table">
 
-			<tr>
-				<th> Job Title</th>
-				<th> Pay</th>
-				<th> Hours Worked</th>
-				<th> Job Status</th>
-				<th> Payment Status</th>
-				<th> Net Pay</th>
-				<th> Pay Document </th>
-				<th></th>
-			</tr>
+				<tr>
+					<th> Job Title</th>
+					<th> Pay</th>
+					<th> Hours Worked</th>
+					<th> Job Status</th>
+					<th> Payment Status</th>
+					<th> Net Pay</th>
+					<th> Pay Document </th>
+					<th></th>
+				</tr>
 
-			<!-- Item #1 -->
-			<%= render 'my_job', jobs: @jobs %>
+				<!-- Item #1 -->
+				<%= render 'my_job', jobs: @jobs %>
 
-		</table>
+			</table>
 
-		<br>
+			<br>
 
-		<a href="<%= jobs_path %>" class="button">All Jobs</a>
+			<a href="<%= jobs_path %>" class="button">All Jobs</a>
 
-	</div>
+		</div>
+	<% else %>
+		<p class="margin-bottom-25"> <strong> Apply for more jobs, You do not have any jobs assigned yet. </strong> </p>
+	<% end %>
 
 </div>

@@ -32,13 +32,6 @@
       </div>
       <p class="margin-reset"> <%= @job.description %> </p>
     </div>
-    <% if current_user.AssignedJobs.map(&:job_status).include? 'Pending' %>
-      <div style="margin-top: 4%;">
-        <div class="content">
-          <p> <span style="color: red"> Note: </span> <strong> Complete your current job to get a new one. </strong> </p>
-        </div>
-      </div>
-    <% end %>
   </div>
 
 
