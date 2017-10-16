@@ -1,12 +1,14 @@
 class JobsController < ApplicationController
   def index
+    if user_signed_in?
+      @jobs = Job.tagged_with_jobs(current_user).page(params[:page]).per(5)
+    end
     authorize! :index, Job
-    @jobs = Job.tagged_with_jobs(current_user).page(params[:page]).per(5)
   end
 
   def show
-    authorize! :show, @job
     @job = Job.find(params[:id])
+    authorize! :show, @job
   end
   
   def request_job
@@ -21,9 +23,13 @@ class JobsController < ApplicationController
   end
 
   def clock_in
-    session[:clock_in] = Time.now
-    session[:job_id] = params[:id]
-    redirect_to page_path('my_jobs'), notice: 'Clocked In successfully'
+    if !session[:clock_in].present?
+      session[:clock_in] = Time.now
+      session[:job_id] = params[:id]
+      redirect_to page_path('my_jobs'), notice: 'Clocked In successfully'
+    else
+      redirect_to page_path('my_jobs'), alert: 'Already Clocked In'
+    end
   end
 
   def clock_out
@@ -32,8 +38,12 @@ class JobsController < ApplicationController
       job_id = session[:job_id]
       session[:clock_in] = nil
       session[:job_id] = nil
-      total_time = (TimeDifference.between(Time.now, clock_in).in_minutes) / 60
-      redirect_to page_path('my_jobs'), notice: total_time.to_s
+      #total_time = (TimeDifference.between(Time.now, clock_in).in_minutes) / 60
+      @job = Job.find(params[:id])
+      @clock = @job.clocks.build(clock_in: clock_in, clock_out: Time.now)
+      if @clock.save
+        redirect_to page_path('my_jobs'), notice: 'Clocked Out successfully'
+      end
     else
       redirect_to page_path('my_jobs'), alert: 'You muse clock in before clocking out'
     end
