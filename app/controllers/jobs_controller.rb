@@ -25,7 +25,7 @@ class JobsController < ApplicationController
   def clock_in
     if !session[:clock_in].present?
       session[:clock_in] = Time.now
-      session[:job_id] = params[:id]
+      session[:job_id] = AssignedJob.find(params[:id]).job.id
       redirect_to page_path('my_jobs'), notice: 'Clocked In successfully'
     else
       redirect_to page_path('my_jobs'), alert: 'Already Clocked In'
@@ -39,7 +39,10 @@ class JobsController < ApplicationController
       session[:clock_in] = nil
       session[:job_id] = nil
       #total_time = (TimeDifference.between(Time.now, clock_in).in_minutes) / 60
-      @job = Job.find(params[:id])
+      @job = Job.find(job_id)
+      @job.AssignedJob.payment = params[:net]
+      @job.AssignedJob.total_hours = params[:hours]
+      @job.AssignedJob.save
       @clock = @job.clocks.build(clock_in: clock_in, clock_out: Time.now)
       if @clock.save
         redirect_to page_path('my_jobs'), notice: 'Clocked Out successfully'

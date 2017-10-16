@@ -2,6 +2,8 @@ class AssignedJob < ApplicationRecord
 	belongs_to :user
 	belongs_to :job
 
+  after_destroy { |record| RequestedJob.where(job_id: record.job.id, user_id: record.user_id).delete_all }
+
 	scope :admin_report_payment_pending, ->{ where(payment_status: 'Pending') }
 	scope :admin_report_payment_complete, ->{ where(payment_status: 'Complete') }
 

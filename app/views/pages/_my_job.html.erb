@@ -35,12 +35,12 @@
 		<% end %>
 		
 		<td class="action">
-			<% if my_job.job_status == "Pending" %>
+			<% if my_job.job_status == "Pending" && my_job.job.status == "Hourly" %>
 				<a href="<%= clock_in_job_path(my_job) %>"><i class="fa fa-clock-o"></i> ClockIn</a>
 			<% end %>
 			<a href="<%= job_path(my_job) %>"><i class="fa fa-eye-slash"></i> View</a>
-			<% if my_job.job_status == "Pending" %>	
-				<a href="<%= clock_out_job_path(my_job) %>"><i class="fa fa-hourglass"></i> ClockOut</a>
+			<% if my_job.job_status == "Pending" && my_job.job.status == "Hourly" %>	
+				<a href="<%= clock_out_job_path(my_job, hours: (total_hours.to_f).round(2), net: (total_hours * my_job.job.payment.to_i).round(4)) %>"><i class="fa fa-hourglass"></i> ClockOut</a>
 			<% end %>
 		</td>
 	

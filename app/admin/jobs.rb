@@ -6,6 +6,7 @@ ActiveAdmin.register Job do
 
   index do
     selectable_column
+    column 'Job Number', :id
     column 'Job Title', :title
     column "Job Description" do |job|
       truncate(job.description, omision: "...", length: 30)

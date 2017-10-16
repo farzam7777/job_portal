@@ -99,7 +99,7 @@
           </li>
         </ul>
         <% if !current_user.AssignedJobs.map(&:job_status).include? 'Pending' %>
-          <% if @job.RequestedJobs.map(&:user).include? current_user %>
+          <% if @job.RequestedJobs.all.where(status: 'Not Reviewed').map(&:user).include? current_user %>
             <a href="#" class="button request_applied"> Applied, Request Pending </a>
           <% else %>
             <%= link_to 'Apply For This Job', request_job_job_path(@job), method: :post, class: 'button' %>
