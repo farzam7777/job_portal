@@ -15,7 +15,13 @@ ActiveAdmin.register RequestedJob do
     requested_job = RequestedJob.find(params[:id])
     requested_job.update(status: 'Approved')
     assigned_job = AssignedJob.new
-    assigned_job = AssignedJob.create(user_id: requested_job.user.id, job_id: requested_job.job.id, total_hours: 0, job_status: 'Pending', payment_status: 'Pending', payment: 0)
+    
+    if requested_job.job.status == "Hourly"
+      assigned_job = AssignedJob.create(user_id: requested_job.user.id, job_id: requested_job.job.id, total_hours: 0, job_status: 'Pending', payment_status: 'Pending', payment: 0)
+    else
+      assigned_job = AssignedJob.create(user_id: requested_job.user.id, job_id: requested_job.job.id, total_hours: 0, job_status: 'Pending', payment_status: 'Pending', payment: requested_job.job.payment)
+    end
+    
     if assigned_job.save
       redirect_to admin_assigned_job_path(assigned_job)
     else 
